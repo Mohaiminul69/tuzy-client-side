@@ -1,17 +1,26 @@
 import React from "react";
-import useFirebase from "../../Hooks/useFirebase";
+import useAuth from "../../Hooks/useAuth";
+import { Container } from "react-bootstrap";
+import { useLocation, useHistory } from "react-router-dom";
 
 const Login = () => {
-  const { user, signInUsingGoogle, logOut } = useFirebase();
+  const { signInUsingGoogle } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
+  const redirect_uri = location.state?.from || "/home";
+  const handleGoogleLogin = () => {
+    signInUsingGoogle().then((res) => {
+      history.push(redirect_uri);
+    });
+  };
   return (
-    <div>
-      <h1>Login</h1>
-      <button onClick={signInUsingGoogle} className="btn btn-danger">
-        Login with Google
-      </button>
-      <button onClick={logOut} className="btn btn-danger">
-        Logout
-      </button>
+    <div className="bgLogin">
+      <Container>
+        <h1>Login</h1>
+        <button onClick={handleGoogleLogin} className="btn btn-danger">
+          Login with Google
+        </button>
+      </Container>
     </div>
   );
 };

@@ -12,35 +12,38 @@ initializeAuthentication();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const auth = getAuth();
-  const googleProvider = new GoogleAuthProvider();
 
   const signInUsingGoogle = () => {
-    console.log("hoise");
-    signInWithPopup(auth, googleProvider).then((res) => {
-      console.log(res.user);
-    });
+    setIsLoading(true);
+    const googleProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleProvider)
+      .then((res) => setUser(res.user))
+      .finally(() => setIsLoading(false));
   };
 
   const logOut = () => {
-    signOut(auth).then(() => {
-      setUser({});
-    });
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {})
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
-        // User is signed out
-        // ...
+        setUser({});
       }
+      setIsLoading(false);
     });
-  }, []);
+    return () => unsubscribed;
+  }, [auth]);
 
-  return { user, signInUsingGoogle, logOut };
+  return { user, signInUsingGoogle, logOut, isLoading };
 };
 
 export default useFirebase;

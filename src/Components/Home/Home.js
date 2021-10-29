@@ -11,7 +11,7 @@ const Home = () => {
   }, []);
   console.log(locations);
   return (
-    <div>
+    <div className="bg-primary">
       <h1>HEllo</h1>
     </div>
   );

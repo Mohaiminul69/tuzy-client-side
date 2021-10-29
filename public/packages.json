@@ -1,0 +1,30 @@
+[
+  {
+    "key": 1,
+    "name": "Honeymoon Package",
+    "price": "300",
+    "description": "You are always welcome to have wonderful honeymoon experience, and make memories with Tuzy. But you have to bring your own wife, coz we are not providing any for you. And dont bring your friends this time",
+    "img": "https://i.ibb.co/17jX1FB/pexels-asad-photo-maldives-1024967.jpg"
+  },
+  {
+    "key": 2,
+    "name": "Camping Package",
+    "price": "100",
+    "description": "Have wonderful camping experience, and make memories with Tuzy. You can go on camping by yourslef with our tour team and make some friends along the way. Or you can bring you own friends with you, we dont mind.",
+    "img": "https://i.ibb.co/0qQ4Ppv/pexels-andrea-piacquadio-3777017.jpg"
+  },
+  {
+    "key": 3,
+    "name": "Advanture Package",
+    "price": "150",
+    "description": "Come have wonderful advantures and make memories with Tuzy. You can go on advantures by yourslef with our tour team and make some friends along the way. Or you can bring you own friends with you, we dont mind.",
+    "img": "https://i.ibb.co/xFLfW7X/pexels-jahoo-clouseau-382177.jpg"
+  },
+  {
+    "key": 4,
+    "name": "Savings Package",
+    "price": "180",
+    "description": "We know how much you love to travel. So dont worry about money, we got you covered, that last break up was pretty hard on you. You need to find yourself all over again. And this time do bring your friends. We dont want you to feel lonely.",
+    "img": "https://i.ibb.co/NN3Jrt1/pexels-alexander-mils-2068975.jpg"
+  }
+]

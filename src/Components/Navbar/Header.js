@@ -7,10 +7,21 @@ import useAuth from "./../../Hooks/useAuth";
 
 const Header = () => {
   const { user, logOut } = useAuth();
+  const nav = document.querySelector(".customNav");
+  if (nav) {
+    document.addEventListener("scroll", () => {
+      var scrollPos = window.scrollY;
+      if (scrollPos > 150) {
+        nav.style.background = "rgba(27, 27, 27, 0.95)";
+      } else {
+        nav.style.background = "transparent";
+      }
+    });
+  }
   return (
     <Fragment>
       <Navbar
-        sticky="top"
+        fixed="top"
         className="customNav"
         variant="light"
         collapseOnSelect
@@ -28,9 +39,6 @@ const Header = () => {
           <Navbar.Collapse className="justify-content-end">
             <NavLink className="navLink" to="/home">
               Home
-            </NavLink>
-            <NavLink className="navLink" to="/videoCall">
-              Video Call
             </NavLink>
             <NavLink className="navLink" to="/manage">
               Manage

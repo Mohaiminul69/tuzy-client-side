@@ -7,9 +7,9 @@
   padding: 5px 20px !important;
   color: white !important;
 }
-.customNav {
-  background: #1b1b1b;
-}
+/* .customNav {
+  background: rgba(27, 27, 27, 0);
+} */
 .navLink {
   color: white !important;
   text-decoration: none;

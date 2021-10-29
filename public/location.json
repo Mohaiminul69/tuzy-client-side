@@ -3,42 +3,49 @@
     "key": 1,
     "name": "United Kingdom",
     "price": "300",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "shortDescription": "Visit United Kingdom with Tuzy.",
     "img": "https://i.ibb.co/zmHw3d2/pexels-nikita-khandelwal-800532.jpg"
   },
   {
     "key": 2,
     "name": "Venice",
     "price": "100",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "shortDescription": "Visit Venice the beautiful city of Italy.",
     "img": "https://i.ibb.co/6XD8HKF/pexels-pixabay-258196.jpg"
   },
   {
     "key": 3,
     "name": "India",
     "price": "150",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "shortDescription": "Visit Taj Mahal the beautiful monument of India.",
     "img": "https://i.ibb.co/JryB98D/15-155705-taj-mahal-india-travel-destinations-architecture-taj-mahal.jpg"
   },
   {
     "key": 4,
     "name": "Rome",
     "price": "180",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "shortDescription": "Visit Rome the beautiful city of Italy.",
     "img": "https://i.ibb.co/StjJyYg/pexels-davi-pimentel-2064827.jpg"
   },
   {
     "key": 5,
     "name": "Bali",
     "price": "300",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa",
+    "shortDescription": "Visit Bali the beautiful island of Indonesia.",
     "img": "https://i.ibb.co/86prszs/pexels-timur-kozmenko-2474689.jpg"
   },
   {
     "key": 6,
     "name": "Saint Martin",
     "price": "100",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "shortDescription": "Visit Saint Martin the beautiful island of Bangladesh.",
     "img": "https://i.ibb.co/jR5dSWj/ashraful-pranto-cnbw-Gzh-Y-jk-unsplash.jpg"
+  },
+  {
+    "key": 7,
+    "name": "Cox's Bazar",
+    "price": "100",
+    "shortDescription": "Visit Cox's Bazar the Longest beach of the world.",
+    "img": "https://i.ibb.co/q76gYk4/ashraful-pranto-s-Z90-UEv0-CHw-unsplash.jpg"
   }
 ]

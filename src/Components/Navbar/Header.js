@@ -40,24 +40,29 @@ const Header = () => {
             <NavLink className="navLink" to="/home">
               Home
             </NavLink>
-            <NavLink className="navLink" to="/manage">
-              Manage
-            </NavLink>
             {/* 
 <----------------- Showing Logout Button If the user is logged in ----------------->
- */}
+*/}
             {user?.email ? (
-              <Button className="ms-3" onClick={logOut} variant="danger">
-                Logout
-              </Button>
+              <Fragment>
+                <NavLink className="navLink" to="/manage">
+                  Manage Bookings
+                </NavLink>
+                <NavLink className="navLink" to="/myOrders">
+                  My Bookings
+                </NavLink>
+                <Button className="ms-3" onClick={logOut} variant="danger">
+                  Logout
+                </Button>
+              </Fragment>
             ) : (
               <Fragment>
                 <NavLink className="navLink" to="/login">
                   Login
                 </NavLink>
-                <NavLink className="navLink" to="/register">
+                {/* <NavLink className="navLink" to="/register">
                   Register
-                </NavLink>
+                </NavLink> */}
               </Fragment>
             )}
             {/* 

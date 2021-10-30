@@ -89,7 +89,7 @@ const Footer = () => {
                 </Col>
                 <Col xm={6}>
                   <img
-                    src="https://i.ibb.co/zmHw3d2/pexels-nikita-khandelwal-800532.jpg"
+                    src="https://i.ibb.co/q14zSQh/pexels-amine-m-siouri-2055556.jpg"
                     alt=""
                   />
                 </Col>

@@ -1,7 +1,7 @@
 .not-found-background {
   background: url("https://i.ibb.co/Wc54b3f/pexels-rudolf-jakkel-418831.jpg")
     no-repeat center center/cover;
-  max-height: 70vh;
+  min-height: 100vh;
   position: relative;
   z-index: 1;
 }
@@ -22,6 +22,6 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 100vh;
   color: white;
 }

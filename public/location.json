@@ -1,6 +1,6 @@
 [
   {
-    "key": 1,
+    "type": "tour",
     "name": "London",
     "price": "300",
     "shortDescription": "Visit United Kingdom with Tuzy.",
@@ -8,7 +8,7 @@
     "img": "https://i.ibb.co/zmHw3d2/pexels-nikita-khandelwal-800532.jpg"
   },
   {
-    "key": 2,
+    "type": "tour",
     "name": "Venice",
     "price": "100",
     "shortDescription": "Visit Venice the beautiful city of Italy.",
@@ -16,7 +16,7 @@
     "img": "https://i.ibb.co/6XD8HKF/pexels-pixabay-258196.jpg"
   },
   {
-    "key": 3,
+    "type": "tour",
     "name": "Delhi",
     "price": "150",
     "shortDescription": "Visit Taj Mahal the beautiful monument of India.",
@@ -24,7 +24,7 @@
     "img": "https://i.ibb.co/JryB98D/15-155705-taj-mahal-india-travel-destinations-architecture-taj-mahal.jpg"
   },
   {
-    "key": 4,
+    "type": "tour",
     "name": "Rome",
     "price": "180",
     "shortDescription": "Visit Rome the beautiful city of Italy.",
@@ -32,7 +32,7 @@
     "img": "https://i.ibb.co/StjJyYg/pexels-davi-pimentel-2064827.jpg"
   },
   {
-    "key": 5,
+    "type": "tour",
     "name": "Bali",
     "price": "300",
     "shortDescription": "Visit Bali the beautiful island of Indonesia.",
@@ -40,7 +40,7 @@
     "img": "https://i.ibb.co/86prszs/pexels-timur-kozmenko-2474689.jpg"
   },
   {
-    "key": 6,
+    "type": "tour",
     "name": "Saint Martin",
     "price": "100",
     "shortDescription": "Visit Saint Martin the beautiful island of Bangladesh.",
@@ -48,7 +48,7 @@
     "img": "https://i.ibb.co/jR5dSWj/ashraful-pranto-cnbw-Gzh-Y-jk-unsplash.jpg"
   },
   {
-    "key": 7,
+    "type": "tour",
     "name": "Cox's Bazar",
     "price": "100",
     "shortDescription": "Visit Cox's Bazar the Longest beach of the world.",

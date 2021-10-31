@@ -13,6 +13,7 @@ const Manage = () => {
   const handleAlert = () => setShowAlert(true);
   // Confirmation Modal
   // Confirmation Modal
+  const [orderId, setOrderId] = useState(0);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -54,6 +55,10 @@ const Manage = () => {
         }
       });
   };
+  const sendIdToModal = (id) => {
+    setOrderId(id);
+    handleShow();
+  };
   return (
     <div className="bgManageBookings py-5">
       <h1 className="display-2 my-5">Manage Bookings</h1>
@@ -82,7 +87,7 @@ const Manage = () => {
                   Approve
                 </button>
                 <button
-                  onClick={handleShow}
+                  onClick={() => sendIdToModal(order._id)}
                   className="btn btn-danger btn-sm mt-2"
                 >
                   Cancel
@@ -97,7 +102,7 @@ const Manage = () => {
                 handleOrderDelete={handleOrderDelete}
                 show={show}
                 handleClose={handleClose}
-                order={order}
+                orderId={orderId}
               />
             </div>
           ))}

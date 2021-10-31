@@ -35,3 +35,13 @@
 .bannerSlogan img {
   width: 200px;
 }
+@media (max-width: 1025px) {
+  .sliderItem {
+    height: 540px;
+  }
+}
+@media (max-width: 765px) {
+  .sliderItem {
+    height: 100vh;
+  }
+}

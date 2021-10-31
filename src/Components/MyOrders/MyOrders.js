@@ -2,9 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import ModalConfirm from "../Modals/ModalConfirm";
+import ModalAlert from "../Modals/ModalAlert";
 import "./myOrders.css";
 
 const MyOrders = () => {
+  // Alert Modal
+  // Alert Modal
+  const [alertText, setAlertText] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const closeAlert = () => setShowAlert(false);
+  const handleAlert = () => setShowAlert(true);
+  // Confirmation Modal
+  // Confirmation Modal
+  // Confirmation Modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
   useEffect(() => {
@@ -13,21 +27,20 @@ const MyOrders = () => {
       .then((data) => setOrders(data));
   }, [user.email]);
   const handleOrderDelete = (id) => {
-    var cancel = window.confirm("Are you sure you want to cancel?");
-    if (cancel) {
-      fetch(`https://fast-crag-74063.herokuapp.com/deleteOrder/${id}`, {
-        method: "DELETE",
-        headers: { "content-type": "application/json" },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount) {
-            alert("Booking Canceled Successfully");
-            const remainingOrders = orders.filter((order) => order._id !== id);
-            setOrders(remainingOrders);
-          }
-        });
-    }
+    handleClose();
+    fetch(`https://fast-crag-74063.herokuapp.com/deleteOrder/${id}`, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          const remainingOrders = orders.filter((order) => order._id !== id);
+          setOrders(remainingOrders);
+          setAlertText("Booking Canceled");
+          handleAlert();
+        }
+      });
   };
   return (
     <div className="bgMyOrders py-5">
@@ -54,19 +67,27 @@ const MyOrders = () => {
                     <Link to={`/orderDetails/${order._id}`}>
                       <button className="btn btn-dark">View Details</button>
                     </Link>
-                    <button
-                      onClick={() => handleOrderDelete(order._id)}
-                      className="btn btn-danger"
-                    >
+                    <button onClick={handleShow} className="btn btn-danger">
                       Cancel Booking
                     </button>
                   </div>
+                  <ModalConfirm
+                    handleOrderDelete={handleOrderDelete}
+                    show={show}
+                    handleClose={handleClose}
+                    order={order}
+                  />
                 </div>
               </Col>
             ))}
           </Row>
         )}
       </Container>
+      <ModalAlert
+        showAlert={showAlert}
+        closeAlert={closeAlert}
+        alertText={alertText}
+      />
     </div>
   );
 };

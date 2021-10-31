@@ -4,8 +4,15 @@ import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import "./detailsView.css";
 import useAuth from "./../../Hooks/useAuth";
+import ModalAlert from "../Modals/ModalAlert";
 
 const DetailsView = () => {
+  // Alert Modal
+  // Alert Modal
+  const [alertText, setAlertText] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const closeAlert = () => setShowAlert(false);
+  const handleAlert = () => setShowAlert(true);
   const { user } = useAuth();
   const { id } = useParams();
   const [location, setLocation] = useState({});
@@ -39,7 +46,8 @@ const DetailsView = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert("Order Processed Successfully");
+          setAlertText("Booking Processed");
+          handleAlert();
           reset();
         }
       });
@@ -131,6 +139,11 @@ const DetailsView = () => {
           </Col>
         </Row>
       </Container>
+      <ModalAlert
+        showAlert={showAlert}
+        closeAlert={closeAlert}
+        alertText={alertText}
+      />
     </div>
   );
 };

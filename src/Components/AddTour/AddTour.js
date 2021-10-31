@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import ModalAlert from "../Modals/ModalAlert";
 import "./addTour.css";
 
 const AddTour = () => {
+  // Alert Modal
+  // Alert Modal
+  const [alertText, setAlertText] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const closeAlert = () => setShowAlert(false);
+  const handleAlert = () => setShowAlert(true);
   const {
     register,
     handleSubmit,
@@ -19,7 +26,8 @@ const AddTour = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Order Processed Successfully");
+          setAlertText("Booking Processed");
+          handleAlert();
           reset();
         }
       });
@@ -74,6 +82,11 @@ const AddTour = () => {
           <Col sm={12} md={3}></Col>
         </Row>
       </Container>
+      <ModalAlert
+        showAlert={showAlert}
+        closeAlert={closeAlert}
+        alertText={alertText}
+      />
     </div>
   );
 };

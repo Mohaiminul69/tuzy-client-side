@@ -1,8 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import ModalConfirm from "../Modals/ModalConfirm";
+import ModalAlert from "../Modals/ModalAlert";
 import "./manage.css";
 
 const Manage = () => {
+  // Alert Modal
+  // Alert Modal
+  const [alertText, setAlertText] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const closeAlert = () => setShowAlert(false);
+  const handleAlert = () => setShowAlert(true);
+  // Confirmation Modal
+  // Confirmation Modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/manage")
@@ -19,27 +32,27 @@ const Manage = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          alert("Booking Approved");
           setOrders(orders);
+          setAlertText("Booking Approved");
+          handleAlert();
         }
       });
   };
   const handleOrderDelete = (id) => {
-    var cancel = window.confirm("Are you sure you want to cancel?");
-    if (cancel) {
-      fetch(`https://fast-crag-74063.herokuapp.com/deleteOrder/${id}`, {
-        method: "DELETE",
-        headers: { "content-type": "application/json" },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount) {
-            alert("Booking Canceled Successfully");
-            const remainingOrders = orders.filter((order) => order._id !== id);
-            setOrders(remainingOrders);
-          }
-        });
-    }
+    handleClose();
+    fetch(`https://fast-crag-74063.herokuapp.com/deleteOrder/${id}`, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          const remainingOrders = orders.filter((order) => order._id !== id);
+          setOrders(remainingOrders);
+          setAlertText("Booking Canceled");
+          handleAlert();
+        }
+      });
   };
   return (
     <div className="bgManageBookings py-5">
@@ -69,12 +82,23 @@ const Manage = () => {
                   Approve
                 </button>
                 <button
-                  onClick={() => handleOrderDelete(order._id)}
+                  onClick={handleShow}
                   className="btn btn-danger btn-sm mt-2"
                 >
                   Cancel
                 </button>
               </div>
+              <ModalAlert
+                showAlert={showAlert}
+                closeAlert={closeAlert}
+                alertText={alertText}
+              />
+              <ModalConfirm
+                handleOrderDelete={handleOrderDelete}
+                show={show}
+                handleClose={handleClose}
+                order={order}
+              />
             </div>
           ))}
         </div>

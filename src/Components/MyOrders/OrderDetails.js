@@ -6,6 +6,9 @@ const OrderDetails = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const [location, setLocation] = useState({});
+  /*
+<---------------------------- Fetching Single Tour to show details ---------------------------->
+*/
   useEffect(() => {
     fetch(`https://fast-crag-74063.herokuapp.com/orderDetails/${id}`)
       .then((res) => res.json())

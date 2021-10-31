@@ -7,6 +7,9 @@ import "./touristSpots.css";
 const TouristSpots = () => {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(false);
+  /*
+<---------------------------- Fetching Tour Data from database ---------------------------->
+*/
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/locations")
       .then((res) => res.json())

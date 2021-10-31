@@ -20,6 +20,9 @@ const DeleteTour = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [orders, setOrders] = useState([]);
+  /*
+<---------------------------- Gettng All Tours From Database ---------------------------->
+*/
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/allTour")
       .then((res) => res.json())
@@ -28,6 +31,9 @@ const DeleteTour = () => {
         setLoading(true);
       });
   }, []);
+  /*
+<---------------------------- Deleting Tour from database ---------------------------->
+*/
   const handleOrderDelete = (id) => {
     handleClose();
     fetch(`https://fast-crag-74063.herokuapp.com/deleteTour/${id}`, {
@@ -44,6 +50,9 @@ const DeleteTour = () => {
         }
       });
   };
+  /*
+<---------------------------- Sending Id to Modal ---------------------------->
+*/
   const sendIdToModal = (id) => {
     setOrderId(id);
     handleShow();

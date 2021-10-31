@@ -2,6 +2,9 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
 const ModalConfirm = ({ handleOrderDelete, show, handleClose, orderId }) => {
+  /*
+<---------------------------- Confirm Modal Sending Id to Delete From Database ---------------------------->
+*/
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>

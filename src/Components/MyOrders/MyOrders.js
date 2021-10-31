@@ -23,6 +23,9 @@ const MyOrders = () => {
   const handleShow = () => setShow(true);
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
+  /*
+<---------------------------- Fetching My Booking Data from database ---------------------------->
+*/
   useEffect(() => {
     fetch(`https://fast-crag-74063.herokuapp.com/myOrders/${user.email}`)
       .then((res) => res.json())
@@ -31,6 +34,9 @@ const MyOrders = () => {
         setLoading(true);
       });
   }, [user.email]);
+  /*
+<---------------------------- Canceling Booking and deleteing from database ---------------------------->
+*/
   const handleOrderDelete = (id) => {
     handleClose();
     fetch(`https://fast-crag-74063.herokuapp.com/deleteOrder/${id}`, {
@@ -47,6 +53,9 @@ const MyOrders = () => {
         }
       });
   };
+  /*
+<---------------------------- Sending Id to Modal ---------------------------->
+*/
   const sendIdToModal = (id) => {
     setOrderId(id);
     handleShow();

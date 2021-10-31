@@ -17,6 +17,9 @@ const DetailsView = () => {
   const { user } = useAuth();
   const { id } = useParams();
   const [location, setLocation] = useState({});
+  /*
+<---------------------------- Fetching Single Tour to show details ---------------------------->
+*/
   useEffect(() => {
     fetch(`https://fast-crag-74063.herokuapp.com/details/${id}`)
       .then((res) => res.json())
@@ -42,6 +45,9 @@ const DetailsView = () => {
     location.status = false;
     location.address = data.address;
     location.creditCard = data.creditCard;
+    /*
+<----------- Booking a Tour and Adding data to New Collection in Database ----------->
+*/
     fetch("https://fast-crag-74063.herokuapp.com/bookings", {
       method: "POST",
       headers: { "content-type": "application/json" },

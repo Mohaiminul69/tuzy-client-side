@@ -6,6 +6,9 @@ import GallaryItem from "./GallaryItem";
 const Gallary = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  /*
+<---------------------------- Fetching Gallary Image URL's from database ---------------------------->
+*/
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/images")
       .then((res) => res.json())

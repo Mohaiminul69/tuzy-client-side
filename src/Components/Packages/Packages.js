@@ -6,6 +6,9 @@ import SinglePackage from "./SinglePackage";
 const Packages = () => {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(false);
+  /*
+<---------------------------- Fetching Tour Packages from Database ---------------------------->
+*/
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/packages")
       .then((res) => res.json())

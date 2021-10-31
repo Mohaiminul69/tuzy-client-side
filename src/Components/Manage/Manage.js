@@ -19,6 +19,9 @@ const Manage = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [orders, setOrders] = useState([]);
+  /*
+<---------------------------- Fetching All the Bookings from Multiple Users To Manage ---------------------------->
+*/
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/manage")
       .then((res) => res.json())
@@ -27,6 +30,9 @@ const Manage = () => {
         setLoading(true);
       });
   }, [orders]);
+  /*
+<-------------------- Approving the booking and Changing Status by Updating Database -------------------->
+*/
   const handleApprove = (id) => {
     const update = { status: true };
     fetch(`https://fast-crag-74063.herokuapp.com/approveBooking/${id}`, {
@@ -43,6 +49,9 @@ const Manage = () => {
         }
       });
   };
+  /*
+<----------------------- Canceling Booking made by Users and deleting from database ----------------------->
+*/
   const handleOrderDelete = (id) => {
     handleClose();
     fetch(`https://fast-crag-74063.herokuapp.com/deleteOrder/${id}`, {

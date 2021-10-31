@@ -27,7 +27,7 @@ const AddTour = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          setAlertText("Booking Processed");
+          setAlertText("Tour Created");
           handleAlert();
           reset();
         }

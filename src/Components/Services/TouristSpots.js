@@ -84,7 +84,7 @@ const TouristSpots = () => {
         <h1 className="fw-light text-uppercase my-4">Popular Tours</h1>
         <Slider {...settings}>
           {locations.map((location) => (
-            <TouristSpot key={location.key} location={location} />
+            <TouristSpot key={location._id} location={location} />
           ))}
         </Slider>
       </Container>

@@ -24,6 +24,23 @@ const Manage = () => {
         }
       });
   };
+  const handleOrderDelete = (id) => {
+    var cancel = window.confirm("Are you sure you want to cancel?");
+    if (cancel) {
+      fetch(`https://fast-crag-74063.herokuapp.com/deleteOrder/${id}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            alert("Booking Canceled Successfully");
+            const remainingOrders = orders.filter((order) => order._id !== id);
+            setOrders(remainingOrders);
+          }
+        });
+    }
+  };
   return (
     <div className="bgManageBookings py-5">
       <h1 className="display-2 my-5">Manage Bookings</h1>
@@ -51,7 +68,12 @@ const Manage = () => {
                 >
                   Approve
                 </button>
-                <button className="btn btn-danger btn-sm mt-2">Cancel</button>
+                <button
+                  onClick={() => handleOrderDelete(order._id)}
+                  className="btn btn-danger btn-sm mt-2"
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           ))}

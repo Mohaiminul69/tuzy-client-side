@@ -76,7 +76,7 @@ const Packages = () => {
         <Slider {...settings}>
           {packages.map((singlePackage) => (
             <SinglePackage
-              key={singlePackage.key}
+              key={singlePackage._id}
               singlePackage={singlePackage}
             />
           ))}

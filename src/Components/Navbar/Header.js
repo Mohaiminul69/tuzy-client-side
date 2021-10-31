@@ -11,7 +11,7 @@ const Header = () => {
   if (nav) {
     document.addEventListener("scroll", () => {
       var scrollPos = window.scrollY;
-      if (scrollPos > 150) {
+      if (scrollPos > 70) {
         nav.style.background = "rgba(27, 27, 27, 0.95)";
       } else {
         nav.style.background = "transparent";
@@ -45,6 +45,9 @@ const Header = () => {
 */}
             {user?.email ? (
               <Fragment>
+                <NavLink className="navLink" to="/addTour">
+                  Add Tour
+                </NavLink>
                 <NavLink className="navLink" to="/manage">
                   Manage Bookings
                 </NavLink>

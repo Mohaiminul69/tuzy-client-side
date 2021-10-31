@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import AddTour from "./Components/AddTour/AddTour";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
@@ -27,6 +28,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <PrivateRoute path="/addTour">
+            <AddTour />
+          </PrivateRoute>
           <PrivateRoute path="/myOrders">
             <MyOrders />
           </PrivateRoute>

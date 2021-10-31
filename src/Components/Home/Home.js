@@ -3,6 +3,7 @@ import Packages from "../Packages/Packages";
 import TouristSpots from "../Services/TouristSpots";
 import Banner from "./Banner/Banner";
 import Gallary from "./Gallary/Gallary";
+import Review from "./Reviews/Review";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Banner />
       <TouristSpots />
       <Packages />
+      <Review />
       <Gallary />
     </div>
   );

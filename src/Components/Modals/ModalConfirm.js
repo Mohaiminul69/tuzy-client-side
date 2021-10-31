@@ -10,13 +10,13 @@ const ModalConfirm = ({ handleOrderDelete, show, handleClose, orderId }) => {
       <Modal.Header closeButton>
         <Modal.Title className="text-danger">Cancel Booking!!</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Are you sure you want to cancel order?</Modal.Body>
+      <Modal.Body>Are you sure you want to proceed?</Modal.Body>
       <Modal.Footer>
         <Button variant="danger" onClick={() => handleOrderDelete(orderId)}>
-          Cancel Order
+          Confirm
         </Button>
         <Button variant="dark" onClick={handleClose}>
-          Dont Cancel
+          Cancel
         </Button>
       </Modal.Footer>
     </Modal>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import "./detailsView.css";
@@ -7,6 +7,7 @@ import useAuth from "./../../Hooks/useAuth";
 import ModalAlert from "../Modals/ModalAlert";
 
 const DetailsView = () => {
+  const [loading, setLoading] = useState(false);
   // Alert Modal
   // Alert Modal
   const [alertText, setAlertText] = useState("");
@@ -19,7 +20,10 @@ const DetailsView = () => {
   useEffect(() => {
     fetch(`https://fast-crag-74063.herokuapp.com/details/${id}`)
       .then((res) => res.json())
-      .then((data) => setLocation(data));
+      .then((data) => {
+        setLocation(data);
+        setLoading(true);
+      });
   }, [id]);
   const { name, img, shortDescription, price, description } = location;
   const {
@@ -52,6 +56,15 @@ const DetailsView = () => {
         }
       });
   };
+  if (!loading) {
+    return (
+      <div className="bgMyOrders py-5">
+        <Container className="text-center">
+          <Spinner animation="border" variant="danger" />;
+        </Container>
+      </div>
+    );
+  }
   return (
     <div
       style={{

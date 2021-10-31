@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import TouristSpot from "./TouristSpot";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Slider from "react-slick";
 import "./touristSpots.css";
 
 const TouristSpots = () => {
   const [locations, setLocations] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/locations")
       .then((res) => res.json())
-      .then((data) => setLocations(data));
+      .then((data) => {
+        setLocations(data);
+        setLoading(true);
+      });
   }, []);
   /*
 <---------------------------- Slider Data ---------------------------->
@@ -77,6 +81,17 @@ const TouristSpots = () => {
       },
     ],
   };
+  if (!loading) {
+    return (
+      <div className="bgGrey">
+        <Container className="p-5 text-center">
+          <div className="customHorizontalLine"></div>
+          <h1 className="fw-light text-uppercase my-4">Popular Tours</h1>
+          <Spinner animation="border" variant="danger" />;
+        </Container>
+      </div>
+    );
+  }
   return (
     <div className="bgGrey">
       <Container className="p-5">

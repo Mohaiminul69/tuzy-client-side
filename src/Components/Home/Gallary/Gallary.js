@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Slider from "react-slick";
 import GallaryItem from "./GallaryItem";
 
 const Gallary = () => {
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/images")
       .then((res) => res.json())
-      .then((data) => setImages(data));
+      .then((data) => {
+        setImages(data);
+        setLoading(true);
+      });
   }, []);
   const settings = {
     arrows: false,
@@ -63,6 +67,17 @@ const Gallary = () => {
       },
     ],
   };
+  if (!loading) {
+    return (
+      <div className="bgGrey pt-5">
+        <Container className="p-5 text-center">
+          <div className="customHorizontalLine"></div>
+          <h1 className="fw-light text-uppercase my-4">Gallary</h1>
+          <Spinner animation="border" variant="danger" />;
+        </Container>
+      </div>
+    );
+  }
   return (
     <div className="bgGrey pt-5">
       <Container className="px-5">

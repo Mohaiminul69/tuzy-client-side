@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import SinglePackage from "./SinglePackage";
 
 const Packages = () => {
   const [packages, setPackages] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/packages")
       .then((res) => res.json())
-      .then((data) => setPackages(data));
+      .then((data) => {
+        setPackages(data);
+        setLoading(true);
+      });
   }, []);
   /*
 <---------------------------- Slider Data ---------------------------->
@@ -68,6 +72,17 @@ const Packages = () => {
       },
     ],
   };
+  if (!loading) {
+    return (
+      <div className="bgGrey">
+        <Container className="p-5 text-center">
+          <div className="customHorizontalLine"></div>
+          <h1 className="fw-light text-uppercase my-4">Popular Packages</h1>
+          <Spinner animation="border" variant="danger" />;
+        </Container>
+      </div>
+    );
+  }
   return (
     <div className="bgGrey">
       <Container className="p-5">

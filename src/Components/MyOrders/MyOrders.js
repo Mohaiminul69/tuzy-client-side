@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import ModalConfirm from "../Modals/ModalConfirm";
@@ -7,6 +7,7 @@ import ModalAlert from "../Modals/ModalAlert";
 import "./myOrders.css";
 
 const MyOrders = () => {
+  const [loading, setLoading] = useState(false);
   // Alert Modal
   // Alert Modal
   const [alertText, setAlertText] = useState("");
@@ -25,7 +26,10 @@ const MyOrders = () => {
   useEffect(() => {
     fetch(`https://fast-crag-74063.herokuapp.com/myOrders/${user.email}`)
       .then((res) => res.json())
-      .then((data) => setOrders(data));
+      .then((data) => {
+        setOrders(data);
+        setLoading(true);
+      });
   }, [user.email]);
   const handleOrderDelete = (id) => {
     handleClose();
@@ -47,6 +51,16 @@ const MyOrders = () => {
     setOrderId(id);
     handleShow();
   };
+  if (!loading) {
+    return (
+      <div className="bgMyOrders py-5">
+        <h1 className="display-2 my-5">My Orders</h1>
+        <Container className="text-center">
+          <Spinner animation="border" variant="danger" />;
+        </Container>
+      </div>
+    );
+  }
   return (
     <div className="bgMyOrders py-5">
       <h1 className="display-2 my-5">My Orders</h1>

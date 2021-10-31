@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import ModalConfirm from "../Modals/ModalConfirm";
 import ModalAlert from "../Modals/ModalAlert";
 import "./manage.css";
 
 const Manage = () => {
+  const [loading, setLoading] = useState(false);
   // Alert Modal
   // Alert Modal
   const [alertText, setAlertText] = useState("");
@@ -21,7 +22,10 @@ const Manage = () => {
   useEffect(() => {
     fetch("https://fast-crag-74063.herokuapp.com/manage")
       .then((res) => res.json())
-      .then((data) => setOrders(data));
+      .then((data) => {
+        setOrders(data);
+        setLoading(true);
+      });
   }, [orders]);
   const handleApprove = (id) => {
     const update = { status: true };
@@ -59,6 +63,16 @@ const Manage = () => {
     setOrderId(id);
     handleShow();
   };
+  if (!loading) {
+    return (
+      <div className="bgManageBookings py-5">
+        <h1 className="display-2 my-5">Manage Bookings</h1>
+        <Container className="text-center">
+          <Spinner animation="border" variant="danger" />;
+        </Container>
+      </div>
+    );
+  }
   return (
     <div className="bgManageBookings py-5">
       <h1 className="display-2 my-5">Manage Bookings</h1>
